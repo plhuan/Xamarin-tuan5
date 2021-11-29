@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.BookUpdatePage" Title="Cập nhật sách">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="CẬP NHẬT SÁCH" FontSize="Title" TextColor="Black"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
+                   />
+
+            <Label Text="Tên sách" FontSize="Title"
+                   Grid.Row="1" Grid.Column="0" VerticalOptions="Start"
+                   />
+            <Entry x:Name="inputBookTitle"
+                Grid.Row="1" Grid.Column="1" VerticalOptions="Start"
+                />
+
+            <Label Text="Ảnh bìa" FontSize="Title"
+                   Grid.Row="2" Grid.Column="0" VerticalOptions="Start"
+                   />
+            <Entry x:Name="inputBookImg"
+                Grid.Row="2" Grid.Column="1" VerticalOptions="Start"
+                />
+
+            <Label Text="Giá sách" FontSize="Title"
+                   Grid.Row="3" Grid.Column="0" VerticalOptions="Start"
+                   />
+            <Entry x:Name="inputBookCost"
+                Grid.Row="3" Grid.Column="1" VerticalOptions="Start"
+                />
+
+            <Button Text="Cập nhật" x:Name="btnUpdateBook" Clicked="btnUpdateBook_Clicked"
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="150"
+                    />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

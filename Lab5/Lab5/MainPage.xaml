@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="BOOK STORE" FontSize="Title"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <Label Text="Tên" FontSize="Large"
+               Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
+        />
+        <Entry x:Name="inputName" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
+
+        <Label Text="Bạn là" FontSize="Large"
+               Grid.Row="2" Grid.Column="0" VerticalOptions="Center"
+               />
+        <Picker x:Name="pickerUserType"
+                Grid.Row="2" Grid.Column="1" VerticalOptions="Center"
+        />
+
+        <Button x:Name="btnSubmit" Text="LOGIN" Clicked="btnSubmit_Clicked"
+                Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</ContentPage>
