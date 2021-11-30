@@ -12,6 +12,7 @@ namespace Lab5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CartPage : ContentPage
     {
+        List<Cart> cartList = null;
         public CartPage()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace Lab5
             {
                 return;
             }
+            this.cartList = cartList;
 
             List<Book> bookList = new List<Book>();
             int totalCost = 0;
@@ -51,7 +53,13 @@ namespace Lab5
 
         private void lstCartBook_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            int selectedIndex = e.SelectedItemIndex;
+            if (this.cartList == null) return;
 
+            Cart selectedCart = cartList.ElementAt(selectedIndex);
+            Book selectedBook = (Book)lstCartBook.SelectedItem;
+
+            Navigation.PushAsync(new GuestBookDetailPage(selectedCart, selectedBook));
         }
     }
 }

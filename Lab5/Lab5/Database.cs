@@ -137,5 +137,22 @@ namespace Lab5
             }
         }
 
+        public bool RemoveCart(Cart cart)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, DB_PATH);
+                var connection = new SQLiteConnection(path);
+
+                connection.Delete(cart);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

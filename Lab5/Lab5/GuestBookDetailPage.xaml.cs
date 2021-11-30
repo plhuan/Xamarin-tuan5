@@ -13,36 +13,73 @@ namespace Lab5
     public partial class GuestBookDetailPage : ContentPage
     {
         Book book;
+        Cart cart = null;
         public GuestBookDetailPage(Book book)
         {
             this.book = book;
             InitializeComponent();
             InitBookDetail();
         }
-
+        public GuestBookDetailPage(Cart selectedCart, Book selectedBook)
+        {
+            this.cart = selectedCart;
+            this.book = selectedBook;
+            InitializeComponent();
+            InitBookDetail();
+            InitButtonText();
+        }
+        
         void InitBookDetail()
         {
             eleBImg.Source = book.bImg;
             eleBTitle.Text = book.bTitle;
             eleBCost.Text = book.bCost;
         }
-
-        private void btnAddCart_Clicked(object sender, EventArgs e)
+         
+        void InitButtonText()
+        {
+            btnAddCart.Text = "Xoá khỏi giỏ";
+        }
+        void AddCart(Database db)
         {
             Cart newCart = new Cart();
             newCart.bId = book.bId;
             newCart.totalAmount = book.bCost;
 
-            Database db = new Database();
             if (db.AddCart(newCart))
             {
                 DisplayAlert("Thông báo", "Thêm vào giỏ hàng thành công", "OK");
-                Navigation.PushAsync(new GuestBookListPage());
+                Navigation.PushAsync(new CartPage());
             }
             else
             {
                 DisplayAlert("Thông báo", "Thêm sách không thành công", "OK");
             }
+        }
+
+        void RemoveFromCart(Database db)
+        {
+            if (db.RemoveCart(cart))
+            {
+                DisplayAlert("Thông báo", "Xoá sách khỏi giỏ hàng thành công", "OK");
+                Navigation.PushAsync(new CartPage());
+            }
+            else
+            {
+                DisplayAlert("Thông báo", "Xoá sách khỏi giỏ hàng không thành công", "OK");
+            }
+        }
+
+        private void btnAddCart_Clicked(object sender, EventArgs e)
+        {
+            Database db = new Database();
+            if(this.cart == null)
+            {
+                AddCart(db);
+                return;
+            }
+
+            RemoveFromCart(db);
 
         }
     }
