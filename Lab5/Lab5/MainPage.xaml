@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Lab5.MainPage">
+             x:Class="Lab5.MainPage" Title="Đăng nhập">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -18,20 +19,26 @@
         <Label Text="BOOK STORE" FontSize="Title"
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-        <Label Text="Tên" FontSize="Large"
+        <Label Text="Tài khoản" FontSize="Large"
                Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
         />
-        <Entry x:Name="inputName" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
+        <Entry x:Name="inputUsername" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
 
-        <Label Text="Bạn là" FontSize="Large"
+        <Label Text="Mật khẩu" FontSize="Large"
                Grid.Row="2" Grid.Column="0" VerticalOptions="Center"
                />
-        <Picker x:Name="pickerUserType"
+        <Entry x:Name="inputPassword"
                 Grid.Row="2" Grid.Column="1" VerticalOptions="Center"
         />
 
-        <Button x:Name="btnSubmit" Text="LOGIN" Clicked="btnSubmit_Clicked"
-                Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Label x:Name="txtNotifice" FontSize="Large" TextColor="Red"
+            Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Grid.ColumnSpan="2"
+            />
+
+        <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" FlowDirection="LeftToRight" >
+            <Button x:Name="btnRegister" Text="Đăng ký" Clicked="btnRegister_Clicked" />
+            <Button x:Name="btnSubmit" Text="Đăng nhập" Clicked="btnSubmit_Clicked" />
+        </StackLayout>
 
     </Grid>
 </ContentPage>

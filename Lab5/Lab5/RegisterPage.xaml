@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.RegisterPage" Title="Đăng ký">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition />
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label FontSize="Title" Text="Đăng ký" TextColor="Black"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"
+                />
+
+            <Label FontSize="Large" Text="Tài khoản"
+                   Grid.Row="1" Grid.Column="0" VerticalOptions="Center"
+                   />
+            <Entry x:Name="inputUsername" Placeholder="Username"
+                Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                />
+
+            <Label FontSize="Large" Text="Mật khẩu"
+                   Grid.Row="2" Grid.Column="0" VerticalOptions="Center"
+                   />
+            <Entry x:Name="inputPassword" Placeholder="Password" IsPassword="True"
+                Grid.Row="2" Grid.Column="1" VerticalOptions="Center"
+                />
+
+            <Label FontSize="Large" Text="Xác nhận mk"
+                   Grid.Row="3" Grid.Column="0" VerticalOptions="Center"
+                   />
+            <Entry x:Name="inputConfimPassword" Placeholder="Username" IsPassword="True"
+                Grid.Row="3" Grid.Column="1" VerticalOptions="Center"
+                />
+
+            <Label x:Name="txtNotifice" TextColor="Red" FontSize="Large"
+                   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                   />
+            <Button x:Name="btnRegister" Text="Đăng ký" FontSize="Large" Margin="0,0,0,10" Clicked="btnRegister_Clicked"
+                Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

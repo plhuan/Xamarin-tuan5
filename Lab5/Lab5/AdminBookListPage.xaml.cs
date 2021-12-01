@@ -12,25 +12,21 @@ namespace Lab5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminBookListPage : ContentPage
     {
+        
         public AdminBookListPage()
         {
             InitializeComponent();
-            ListBookInit("");
+            ListBookInit();
         }
-        public AdminBookListPage(string username)
+        public AdminBookListPage(User user)
         {
             InitializeComponent();
-            ListBookInit(username);
+            ListBookInit();
         }
-        public void ListBookInit(string username)
+        public void ListBookInit()
         {
-            txtHello.Text = username;
             Database db = new Database();
             List<Book> books = db.GetBookList();
-            if (username != "")
-            {
-                txtHello.Text = "Chào " + username + "!";
-            }
             if(books == null)
             {
                 return;

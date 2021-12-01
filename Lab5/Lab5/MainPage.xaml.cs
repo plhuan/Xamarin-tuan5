@@ -13,32 +13,47 @@ namespace Lab5
         public MainPage()
         {
             InitializeComponent();
-            InitPicker();
-        }
-
-        void InitPicker()
-        {
-            string[] pickerTypes = new string[]
-            {
-                "Admin",
-                "Guest"
-            };
-
-            pickerUserType.ItemsSource = pickerTypes;
         }
 
         private void btnSubmit_Clicked(object sender, EventArgs e)
         {
-            string selectedType = pickerUserType.SelectedItem.ToString();
-            string username = inputName.Text.ToString();
-            if(selectedType == "Admin")
+            User user = new User();
+            user.username = inputUsername.Text;
+            user.password = inputPassword.Text;
+
+            Database db = new Database();
+
+            List<User> userList = db.IsAccessUser(user);
+            
+            if(userList == null)
             {
-                Navigation.PushAsync(new AdminBookListPage(username));
+                txtNotifice.Text = "Tài khoản hoặc mật khẩu không chình xác";
+                return;
+            }
+
+            if(userList.Count > 0)
+            {
+                if (userList.ElementAt(0).isAdmin)
+                {
+                    Navigation.PushAsync(new AdminBookListPage());
+                }
+                else
+                {
+                    Navigation.PushAsync(new GuestBookListPage(userList.ElementAt(0)));
+                }
+                
             }
             else
             {
-                Navigation.PushAsync(new GuestBookListPage());
+                txtNotifice.Text = "Tài khoản hoặc mật khẩu không chình xác";
+
             }
+
+        }
+
+        private void btnRegister_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegisterPage());
         }
     }
 }

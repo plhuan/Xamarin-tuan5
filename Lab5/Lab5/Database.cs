@@ -20,6 +20,7 @@ namespace Lab5
 
                 conection.CreateTable<Book>();
                 conection.CreateTable<Cart>();
+                conection.CreateTable<User>();
 
                 return true;
             }
@@ -146,6 +147,42 @@ namespace Lab5
 
                 connection.Delete(cart);
 
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // USER
+        //
+        public List<User> IsAccessUser(User user)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, DB_PATH);
+                var connection = new SQLiteConnection(path);
+
+                List<User> userList = connection.Query<User>("SELECT * FROM User WHERE username=\""+ user.username+"\" AND password=\""+user.password+"\"");
+
+
+                return userList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool RegisterUser(User user)
+        {
+            try
+            {
+                string path = System.IO.Path.Combine(folder, DB_PATH);
+                var connection = new SQLiteConnection(path);
+
+                connection.Insert(user);
                 return true;
             }
             catch

@@ -12,14 +12,25 @@ namespace Lab5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GuestBookListPage : ContentPage
     {
+        User user = null;
         public GuestBookListPage()
         {
+            InitializeComponent();
+            InitBookList();
+        }
+        public GuestBookListPage(User user)
+        {
+            this.user = user;
             InitializeComponent();
             InitBookList();
         }
 
         void InitBookList()
         {
+            if(user != null)
+            {
+                txtHello.Text = "Chào "+ user.username + "!";
+            }
             Database db = new Database();
 
             List<Book> bookList = db.GetBookList();
